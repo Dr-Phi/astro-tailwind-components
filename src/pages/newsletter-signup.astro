@@ -10,6 +10,15 @@ import Main from "../layouts/Main.astro";
     background-size: 100%;
     background-repeat: no-repeat;
   }
+  @media (min-width: 1024px) {
+    .mySvg {
+      height: 60vh;
+      width: 40vw;
+      background-image: url("../icons/illustration-sign-up-desktop.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
 
   section {
     font-family: "Roboto", sans-serif;
@@ -34,8 +43,13 @@ import Main from "../layouts/Main.astro";
   li {
     display: flex;
   }
+  .input-error {
+    border: 2px solid rgb(222, 87, 87);
+    background-color: rgba(246, 119, 81, 0.304);
+  }
+
   .shadow-custom:hover {
-    box-shadow: 0 5px 10px rgba(255, 99, 77, 0.5);
+    box-shadow: 0 5px 10px rgba(228, 42, 17, 0.315);
   }
   .hidden {
     display: none;
@@ -47,10 +61,15 @@ import Main from "../layouts/Main.astro";
 </style>
 
 <Main title="Newsletter sign-up form">
-  <section>
-    <div id="initial">
+  <section
+    class="sm:max-w-lg mx-auto lg:max-w-full lg:bg-[#242742] lg:h-screen lg:flex"
+  >
+    <div
+      id="initial"
+      class="lg:flex lg:flex-row-reverse lg:bg-white lg:max-w-3xl lg:rounded-lg lg:mx-auto lg:justify-evenly lg:p-5 lg:max-h-fit lg:m-auto"
+    >
       <div class="mySvg rounded-b-lg"></div>
-      <div class="px-6">
+      <div class="px-6 lg:max-w-sm my-auto">
         <!-- Sign-up form start -->
         <h1 class="text-4xl roboto-bold my-4 text-slate-900">Stay updated!</h1>
         <p class="text-slate-900">
@@ -67,14 +86,20 @@ import Main from "../layouts/Main.astro";
           </li>
           <li><div class="icon-list"></div>And much more!</li>
         </ul>
-        <form>
+        <form class="relative">
           <label for="email" class="font-semibold text-sm">Email address</label
           ><br />
+          <span
+            id="emailError"
+            class="text-red-400 text-xs font-semibold absolute top-1 right-1 ahidden"
+            >Please enter a valid email</span
+          >
           <input
             type="text"
             placeholder="email@company.com"
             id="email"
             name="email"
+            required
             class="border-2 border-slate-300 rounded-md p-2 w-full mb-4 px-4 mt-2"
           />
           <button
@@ -88,19 +113,22 @@ import Main from "../layouts/Main.astro";
     <!-- Sign-up form end -->
 
     <!-- Success message start -->
-    <div id="success" class="px-6 pt-20 hidden">
+    <div
+      id="success"
+      class="px-6 pt-20 lg:bg-white lg:max-w-xl lg:rounded-3xl lg:p-14 lg:m-auto hidden"
+    >
       <div class="icon-list mb-10"></div>
-      <h2 class="text-4xl roboto-bold my-4 text-slate-900">
+      <h2 class="text-4xl roboto-bold my-4 text-slate-900 lg:text-6xl">
         Thanks for subscribing!
       </h2>
-      <p class="mb-40">
+      <p class="mb-40 lg:text-lg lg:mb-8">
         A confirmation email has been sent to
-        <strong id="userEmail">ash@loremcompany.com</strong><br />
+        <strong id="userEmail"></strong><br />
         Please open it and click the button inside to confirm your subscription.
       </p>
       <button
         id="dismiss"
-        class="bg-[#242742] text-white shadow-custom hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] font-semibold text-base rounded-md w-full mb-4 text-center py-2 mt-2 hover:bg-gradient-to-r hover:from-[#ff3e83] hover:to-[#fc624b]"
+        class="bg-[#242742] text-white shadow-custom hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] font-semibold text-base rounded-md w-full mb-4 text-center py-2 mt-2 hover:bg-gradient-to-r hover:from-[#ff3e83] hover:to-[#fc624b] lg:text-lg"
         >Dismiss message</button
       >
 
@@ -112,15 +140,23 @@ import Main from "../layouts/Main.astro";
 <script>
   const initial = document.getElementById("initial");
   const form = document.querySelector("form");
-  const email = document.getElementById("email");
+  const emailError = document.getElementById("emailError");
   const dismiss = document.getElementById("dismiss");
   const success = document.getElementById("success");
+  const emailInput = document.getElementById("email");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let emailInput = document.getElementById("email").value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    document.getElementById("userEmail").textContent = emailInput;
+    if (!emailRegex.test(emailInput.value)) {
+      emailError.classList.remove("hidden");
+      emailInput.classList.add("input-error");
+      return;
+    }
+    emailError.classList.add("hidden");
+    emailInput.classList.remove("input-error");
+    document.getElementById("userEmail").textContent = emailInput.value;
     initial.classList.add("hidden");
     success.classList.remove("hidden");
   });
