@@ -1,0 +1,132 @@
+---
+import Main from "../layouts/Main.astro";
+---
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap");
+  .mySvg {
+    height: 20rem;
+    background-image: url("../icons/illustration-sign-up-mobile.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  section {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .icon-list {
+    height: 1.2rem;
+    width: 1.2rem;
+    background-image: url("../icons/icon-list.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-right: 0.7rem;
+    margin-top: 0.3rem;
+  }
+  li {
+    display: flex;
+  }
+  .shadow-custom:hover {
+    box-shadow: 0 5px 10px rgba(255, 99, 77, 0.5);
+  }
+  .hidden {
+    display: none;
+  }
+  #success > .icon-list {
+    height: 4rem;
+    width: 4rem;
+  }
+</style>
+
+<Main title="Newsletter sign-up form">
+  <section>
+    <div id="initial">
+      <div class="mySvg rounded-b-lg"></div>
+      <div class="px-6">
+        <!-- Sign-up form start -->
+        <h1 class="text-4xl roboto-bold my-4 text-slate-900">Stay updated!</h1>
+        <p class="text-slate-900">
+          Join 60,000+ product managers receiving monthly updates on:
+        </p>
+        <ul class="pt-5 mb-10">
+          <li>
+            <div class="icon-list"></div>Product discovery and building what
+            matters
+          </li>
+          <li>
+            <div class="icon-list"></div>Measuring to ensure updates are a
+            success
+          </li>
+          <li><div class="icon-list"></div>And much more!</li>
+        </ul>
+        <form>
+          <label for="email" class="font-semibold text-sm">Email address</label
+          ><br />
+          <input
+            type="text"
+            placeholder="email@company.com"
+            id="email"
+            name="email"
+            class="border-2 border-slate-300 rounded-md p-2 w-full mb-4 px-4 mt-2"
+          />
+          <button
+            type="submit"
+            class="bg-[#242742] text-white shadow-custom hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] font-semibold text-base rounded-md w-full mb-4 text-center py-2 mt-2 hover:bg-gradient-to-r hover:from-[#ff3e83] hover:to-[#fc624b]"
+            >Subscribe to monthly newsletter</button
+          >
+        </form>
+      </div>
+    </div>
+    <!-- Sign-up form end -->
+
+    <!-- Success message start -->
+    <div id="success" class="px-6 pt-20 hidden">
+      <div class="icon-list mb-10"></div>
+      <h2 class="text-4xl roboto-bold my-4 text-slate-900">
+        Thanks for subscribing!
+      </h2>
+      <p class="mb-40">
+        A confirmation email has been sent to
+        <strong id="userEmail">ash@loremcompany.com</strong><br />
+        Please open it and click the button inside to confirm your subscription.
+      </p>
+      <button
+        id="dismiss"
+        class="bg-[#242742] text-white shadow-custom hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] font-semibold text-base rounded-md w-full mb-4 text-center py-2 mt-2 hover:bg-gradient-to-r hover:from-[#ff3e83] hover:to-[#fc624b]"
+        >Dismiss message</button
+      >
+
+      <!-- Success message end -->
+    </div>
+  </section>
+</Main>
+
+<script>
+  const initial = document.getElementById("initial");
+  const form = document.querySelector("form");
+  const email = document.getElementById("email");
+  const dismiss = document.getElementById("dismiss");
+  const success = document.getElementById("success");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let emailInput = document.getElementById("email").value;
+
+    document.getElementById("userEmail").textContent = emailInput;
+    initial.classList.add("hidden");
+    success.classList.remove("hidden");
+  });
+
+  dismiss.addEventListener("click", () => {
+    initial.classList.remove("hidden");
+    success.classList.add("hidden");
+  });
+</script>

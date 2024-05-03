@@ -20,11 +20,11 @@ const title = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <body>
-    <main>
+  <bod>
+    <main class="bg-slate-950">
       <button
         id="menuBtn"
-        class="group text-black transition-all duration-300 ease-in-out"
+        class="group text-white transition-all duration-300 ease-in-out"
         ><span
           class="bg-left-bottom bg-gradient-to-r to-astro-red from-cyan-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
           >Menu &gt;</span
@@ -44,31 +44,33 @@ const title = Astro.props;
         </div>
         <NavigationBar />
       </header>
-      <slot />
     </main>
-  </body>
+    <slot />
+  </bod>
+
+  <style>
+    body {
+      font-family: "DM Serif Text", serif;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mainHeader = document.getElementById("mainHeader");
+    const closeBtn = document.getElementById("closeBtn");
+
+    menuBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("hidden");
+      mainHeader.classList.toggle("hidden");
+    });
+    closeBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("hidden");
+      mainHeader.classList.toggle("hidden");
+    });
+  </script>
+
+
 </html>
-
-<style>
-  body {
-    font-family: "DM Serif Text", serif;
-  }
-  .hidden {
-    display: none;
-  }
-</style>
-
-<script>
-  const menuBtn = document.getElementById("menuBtn");
-  const mainHeader = document.getElementById("mainHeader");
-  const closeBtn = document.getElementById("closeBtn");
-
-  menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("hidden");
-    mainHeader.classList.toggle("hidden");
-  });
-  closeBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("hidden");
-    mainHeader.classList.toggle("hidden");
-  });
-</script>

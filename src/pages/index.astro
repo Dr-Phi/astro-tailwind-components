@@ -1,5 +1,23 @@
 ---
 import Main from "../layouts/Main.astro";
+import Cards from "../components/Cards.astro";
 ---
 
-<Main title="Home Page" />
+<Main title="Home Page">
+  <Cards
+    cards={[
+      {
+        title: "Newsletter sign-up form",
+        gradientFrom: "#fde68a",
+        gradientTo: "#fca5a5",
+        to: "newsletter-signup",
+      },
+      {
+        title: "Component 2",
+        gradientFrom: "#818cf8",
+        gradientTo: "#d8b4fe",
+        to: "/component-2",
+      },
+    ]}
+  />
+</Main>

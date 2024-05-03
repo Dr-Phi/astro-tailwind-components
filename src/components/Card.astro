@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+
+export type Props = {
+  to: string;
+  title: string;
+  gradientFrom: string;
+  gradientTo: string;
+};
+// Get component props
+const { title, to, gradientFrom, gradientTo } = Astro.props;
+---
+
+<a
+  href={to}
+  class="card inline-block px-4 py-2 rounded-lg no-underline transition duration-200 ease-in-out"
+>
+  <div class="card__inner">
+    <img src="https://placehold.co/600x400" alt="comp img 1" />
+    <div class="text-base text-center font-medium text-black leading-relaxed">
+      {title}
+    </div>
+    <!-- HTML entity: → = &rarr;-->
+    <div class="card__footer">&rarr;</div>
+  </div>
+</a>
+<style define:vars={{ gradientFrom, gradientTo }}>
+  .card {
+    background-image: linear-gradient(
+      to right,
+      var(--gradientFrom),
+      var(--gradientTo)
+    );
+  }
+  .card:hover {
+    transform: scale(0.95);
+  }
+  .card__inner {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card__footer {
+    padding-top: 2rem;
+    font-size: 1.2rem;
+    color: black;
+    margin: auto 0 0 auto;
+  }
+</style>
