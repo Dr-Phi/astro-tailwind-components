@@ -1,4 +1,4 @@
-# Astro Starter Kit: Minimal
+# Astro + Tailwind Components
 
 ## 🧞 Commands
 

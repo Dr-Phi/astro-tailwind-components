@@ -1,0 +1,86 @@
+---
+import Main from "../layouts/Main.astro";
+import CreditCards from "../components/CreditCards.jsx";
+---
+
+<Main title="Newsletter sign-up form">
+  <main>
+    <div id="bg-img"></div>
+    <div id="cards-container" class="relative top-[-13rem] text-white">
+      <div id="back-card">
+        <span id="cvc" class="absolute top-[4.3rem] right-10">000</span>
+      </div>
+      <div id="front-card">
+        <span
+          id="cardNumber"
+          class="absolute text-xl top-[5.3rem] left-5 tracking-widest"
+          >0000 0000 0000 0000</span
+        >
+        <div class="text-white">
+          <span
+            id="cardHolder"
+            class="absolute text-xs bottom-[3.6rem] left-5 tracking-widest"
+            >JOHN SMITH</span
+          >
+          <div class="absolute text-xs bottom-[3.6rem] right-5 tracking-widest">
+            <span id="cardMonth">00</span>/<span id="cardYear">00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <CreditCards client:load />
+  </main>
+</Main>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Oswald:wght@700&family=Roboto:wght@400;700&family=Space+Grotesk:wght@500&display=swap");
+  main {
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: #230932;
+  }
+  #bg-img {
+    background-image: url("../images/bg-card-mobile.png");
+    background-size: cover;
+    background-position: center;
+    height: 30vh;
+    width: 100%;
+    z-index: -1;
+  }
+  @media (min-width: 1024px) {
+  }
+
+  #back-card {
+    background-image: url("../images/bg-card-back.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 200px;
+    right: -3.3rem;
+    width: 300px;
+    z-index: 1;
+  }
+  #front-card {
+    background-image: url("../images/bg-card-front.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    min-height: 200px;
+    position: relative;
+    left: 1.2rem;
+    top: -6.6rem;
+    width: 300px;
+    z-index: 2;
+  }
+  #front-card span {
+    color: white;
+  }
+</style>
+<script>
+  import { cvcStore } from "../stores/storeCard";
+  console.log(cvcStore);
+  cvcStore.subscribe((value) => {
+    console.log(value);
+    document.getElementById("cvc").innerText = value;
+  });
+</script>
