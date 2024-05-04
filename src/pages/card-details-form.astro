@@ -3,14 +3,16 @@ import Main from "../layouts/Main.astro";
 import CreditCards from "../components/CreditCards.jsx";
 ---
 
-<Main title="Newsletter sign-up form">
-  <main>
-    <div id="bg-img"></div>
-    <div id="cards-container" class="relative top-[-13rem] text-white">
+<Main title="Card Details Form">
+  <main id="main-card-container">
+    <div id="bg-img" class="absolute top-1"></div>
+    <div class="text-white mt-7 max-w-[370px] h-[40vh]">
+      <!-- relative top-[-13rem] -->
       <div id="back-card">
         <span id="cvc" class="absolute top-[4.3rem] right-10">000</span>
       </div>
       <div id="front-card">
+        <div id="cardLogo" class="absolute top-5 left-5"></div>
         <span
           id="cardNumber"
           class="absolute text-xl top-[5.3rem] left-5 tracking-widest"
@@ -19,10 +21,10 @@ import CreditCards from "../components/CreditCards.jsx";
         <div class="text-white">
           <span
             id="cardHolder"
-            class="absolute text-xs bottom-[3.6rem] left-5 tracking-widest"
+            class="absolute text-xs bottom-[1.6rem] left-5 tracking-widest"
             >JOHN SMITH</span
           >
-          <div class="absolute text-xs bottom-[3.6rem] right-5 tracking-widest">
+          <div class="absolute text-xs bottom-[1.6rem] right-5 tracking-widest">
             <span id="cardMonth">00</span>/<span id="cardYear">00</span>
           </div>
         </div>
@@ -48,7 +50,16 @@ import CreditCards from "../components/CreditCards.jsx";
     width: 100%;
     z-index: -1;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 780px) {
+    #bg-img {
+      background-image: url("../images/bg-card-desktop.png");
+      height: 100vh;
+      width: 26%;
+      max-width: 260px;
+    }
+    #main-card-container {
+      display: flex;
+    }
   }
 
   #back-card {
@@ -56,7 +67,7 @@ import CreditCards from "../components/CreditCards.jsx";
     background-size: 100%;
     background-repeat: no-repeat;
     position: relative;
-    min-height: 200px;
+    min-height: 165px;
     right: -3.3rem;
     width: 300px;
     z-index: 1;
@@ -65,22 +76,55 @@ import CreditCards from "../components/CreditCards.jsx";
     background-image: url("../images/bg-card-front.png");
     background-size: 100%;
     background-repeat: no-repeat;
-    min-height: 200px;
+    min-height: 165px;
     position: relative;
     left: 1.2rem;
-    top: -6.6rem;
+    top: -4.4rem;
     width: 300px;
+
     z-index: 2;
   }
-  #front-card span {
-    color: white;
+  #cardLogo {
+    height: 4rem;
+    width: 3.5rem;
+    background-image: url("../icons/card-logo.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 4;
   }
 </style>
 <script>
-  import { cvcStore } from "../stores/storeCard";
-  console.log(cvcStore);
+  import {
+    cvcStore,
+    cardNumStore,
+    cardHolderStore,
+    cardMonthStore,
+    cardYearStore,
+  } from "../stores/storeCard";
+
+  function formatCardNumber(input) {
+    // Remove any existing spaces
+    const strippedInput = input.replace(/\s/g, "");
+
+    // add a space after every 4 chars
+    const formattedInput = strippedInput.replace(/(\d{4})/g, "$1 ").trim();
+
+    return formattedInput;
+  }
   cvcStore.subscribe((value) => {
-    console.log(value);
     document.getElementById("cvc").innerText = value;
+  });
+  cardNumStore.subscribe((value) => {
+    const formattedValue = formatCardNumber(value);
+    document.getElementById("cardNumber").innerText = formattedValue;
+  });
+  cardHolderStore.subscribe((value) => {
+    document.getElementById("cardHolder").innerText = value;
+  });
+  cardMonthStore.subscribe((value) => {
+    document.getElementById("cardMonth").innerText = value;
+  });
+  cardYearStore.subscribe((value) => {
+    document.getElementById("cardYear").innerText = value;
   });
 </script>

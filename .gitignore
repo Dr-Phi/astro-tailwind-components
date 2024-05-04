@@ -1,3 +1,6 @@
+##CUSTOM FILES, ADDD BEFORE DEPLOYMENT
+*.gif
+
 # build output
 dist/
 # generated types

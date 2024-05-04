@@ -1,11 +1,11 @@
 .mainComponent {
-  border: 2px solid rgb(169, 10, 175);
-  position: absolute;
-  top: 23rem;
+  /* position: absolute;
+  top: 23rem; */
   z-index: 50;
   color: white;
   width: 100%;
   padding: 0 2rem;
+  margin: 0 auto;
 }
 
 form {
@@ -36,4 +36,49 @@ input {
   border-radius: 5px;
   padding: 1rem 0;
   font-size: 1.2rem;
+}
+
+.custom-gradient {
+  --gradient-start: #21082f;
+  --gradient-middle: #6145fb;
+  --gradient-end: #2f2f2f;
+  background-image: linear-gradient(
+    to right,
+    var(--gradient-start),
+    var(--gradient-middle),
+    var(--gradient-end)
+  );
+  transition: background-image 2s;
+}
+
+.custom-gradient:hover {
+  --gradient-start: #6145fb;
+  --gradient-middle: #21082f;
+  --gradient-end: #3f51b5;
+}
+.hidden {
+  display: none;
+}
+
+#icon-complete {
+  height: 5rem;
+  width: 5rem;
+  background-image: url("../icons/icon-complete.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: 4;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 440px) {
+  .mainComponent {
+    max-width: 420px;
+  }
+}
+
+@media (min-width: 780px) {
+  .mainComponent {
+    margin-top: 2rem;
+  }
 }

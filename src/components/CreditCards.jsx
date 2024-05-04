@@ -1,75 +1,90 @@
 import { useState } from "react";
 import { useStore } from "@nanostores/react";
-import { cvcStore } from "../stores/storeCard";
+import {
+  cvcStore,
+  cardNumStore,
+  cardHolderStore,
+  cardMonthStore,
+  cardYearStore,
+} from "../stores/storeCard";
 import "./creditcardStyles.css";
 
 export default function CreditCards() {
-  const cvc = useStore(cvcStore);
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardHolder, setCardHolder] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
+  const [isHidden, setIsHidden] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    cardNumStore.set("0000 0000 0000 0000");
+    cardMonthStore.set("11");
+    cardYearStore.set("11");
+    cardHolderStore.set("SUCCESS!");
+    cvcStore.set("***");
+    setIsHidden(!isHidden);
+  };
   return (
     <div className="mainComponent">
-      {/* <p>yes</p>
-      <div id="front-card">
-        <p>{cardNumber}</p>
-        <div className="flex justify-between">
-          <p>{cardHolder}</p>
-          <p>
-            {month}/{year}
-          </p>
-        </div>
-      </div> */}
-      <form>
+      <form className={isHidden ? "hidden" : ""}>
         <label>CARDHOLDER NAME</label>
         <input
           type="text"
-          value={cardHolder}
-          onChange={(e) => setCardHolder(e.target.value)}
+          maxLength="29"
+          onChange={(e) => {
+            const text = e.target.value.toUpperCase();
+            cardHolderStore.set(text);
+          }}
           placeholder="e.g. John Smith"
         />
 
         <label>CARD NUMBER</label>
         <input
           type="text"
-          value={cardNumber}
-          onChange={(e) => setCardNumber(e.target.value)}
+          maxLength="19"
+          onChange={(e) => cardNumStore.set(e.target.value)}
           placeholder="e.g. 1234 5678 9123 000"
         />
-        <div className="flex ">
-          <label>EXP. DATE (MM/YY)</label>
-          <label>CVC</label>
+        <div className="flex flex-row">
+          <div className="basis-[60%]">
+            <label>EXP. DATE (MM/YY)</label>
+            <div className="flex flex-row gap-1">
+              <input
+                type="text"
+                maxLength="2"
+                onChange={(e) => cardMonthStore.set(e.target.value)}
+                className="basis-[40%]"
+                placeholder="MM"
+              />
+              <input
+                type="text"
+                maxLength="2"
+                onChange={(e) => cardYearStore.set(e.target.value)}
+                className="basis-[40%]"
+                placeholder="YY"
+              />
+            </div>
+          </div>
+          <div className="inline-block basis-[40%]">
+            <label className="">CVC</label>
+            <input
+              type="text"
+              maxLength="3"
+              onChange={(e) => cvcStore.set(e.target.value)}
+              className="basis-1/2"
+              placeholder="e.g. 123"
+            />
+          </div>
         </div>
-        <div className="flex flex-row gap-1">
-          <input
-            type="text"
-            maxLength="2"
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-            className="basis-1/4"
-            placeholder="MM"
-          />
-          <input
-            type="text"
-            maxLength="2"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            className="basis-1/4"
-            placeholder="YY"
-          />
-
-          <input
-            type="text"
-            maxLength="3"
-            onChange={(e) => cvcStore.set(e.target.value)}
-            className="basis-1/2"
-            placeholder="e.g. 123"
-          />
-        </div>
-
-        <button id="cardBtn">Confirm</button>
       </form>
+      <div id="card-success" className={isHidden ? "" : "hidden"}>
+        <div id="icon-complete"></div>
+        <h4 className="text-[#21082f] text-3xl text-center tracking-wide">
+          THANK YOU!
+        </h4>
+        <p className="text-slate-500 my-4 text-center text-lg">
+          We've added your card details
+        </p>
+      </div>
+      <button id="cardBtn" onClick={handleSubmit} className="custom-gradient">
+        {isHidden ? "Continue" : "Confirm"}
+      </button>
     </div>
   );
 }
