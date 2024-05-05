@@ -1,0 +1,110 @@
+---
+import Main from "../layouts/Main.astro";
+---
+
+<Main title="Order Summary">
+  <!-- ADD BACKGROUND npm -->
+  <div id="bg-shape">
+    <section class="rounded-xl my-auto mx-auto w-[85vw] bg-white max-w-[369px]">
+      <div id="bg-music" class="rounded-xl"></div>
+      <div class="px-5 text-center sm:pt-5">
+        <h2 class="font-bold text-xl">Order Summary</h2>
+        <p class="text-slate-600 font-semibold my-4">
+          You can now listen to millions of songs, audiobooks, and podcasts on
+          any device anywhere you like!
+        </p>
+        <div class="bg-[#f8f9fe] rounded-lg flex p-4 items-center mb-6">
+          <svg
+            class="me-4"
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            ><g fill="none" fill-rule="evenodd"
+              ><circle cx="24" cy="24" r="24" fill="#DFE6FB"></circle><path
+                fill="#717FA6"
+                fill-rule="nonzero"
+                d="M32.574 15.198a.81.81 0 00-.646-.19L20.581 16.63a.81.81 0 00-.696.803V26.934a3.232 3.232 0 00-1.632-.44A3.257 3.257 0 0015 29.747 3.257 3.257 0 0018.253 33a3.257 3.257 0 003.253-3.253v-8.37l9.726-1.39v5.327a3.232 3.232 0 00-1.631-.441 3.257 3.257 0 00-3.254 3.253 3.257 3.257 0 003.254 3.253 3.257 3.257 0 003.253-3.253V15.81a.81.81 0 00-.28-.613z"
+              ></path></g
+            ></svg
+          >
+          <div>
+            <p id="plan-title" class="font-bold text-base">Annual Plan</p><p
+              id="plan-price"
+              class="text-sm font-semibold text-slate-600"
+            >
+              $59.99/year
+            </p>
+          </div>
+          <p
+            class="underline text-[#372ca4] underline-offset-4 font-bold hover:font-semibold text-sm ms-auto hover:cursor-pointer"
+            id="change-plan"
+          >
+            Change
+          </p>
+        </div>
+        <button
+          class="bg-[#1e1fcd] text-white font-bold w-full py-3 rounded-lg mb-4 shadow-custom hover:bg-[#766cf1]"
+          >Proceed to Payment</button
+        >
+        <p
+          class="text-slate-600 font-bold text-sm hover:cursor-pointer hover:text-slate-800 hover:font-semibold hover:underline mb-8 mt-2"
+        >
+          Cancel Order
+        </p>
+      </div>
+    </section>
+  </div>
+</Main>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Oswald:wght@700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:wght@400;700&family=Space+Grotesk:wght@500&display=swap");
+  section {
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
+
+  #bg-music {
+    background-image: url("../icons/illustration-hero.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 10.9rem;
+    width: 100%;
+    z-index: -1;
+  }
+  #bg-shape {
+    background-image: url("../icons/pattern-background-mobile.svg");
+    background-size: 160%;
+    background-color: #dfe8ff;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .shadow-custom {
+    box-shadow: 0 10px 10px rgba(223, 219, 252);
+  }
+  @media (min-width: 900px) {
+    #bg-shape {
+      background-image: url("../icons/pattern-background-desktop.svg");
+      background-size: 100%;
+    }
+  }
+</style>
+
+<script>
+  const planTitle = document.getElementById("plan-title");
+  const planPrice = document.getElementById("plan-price");
+
+  document.getElementById("change-plan").addEventListener("click", () => {
+    if (planTitle.textContent === "Monthly Plan") {
+      planTitle.textContent = "Annual Plan";
+      planPrice.textContent = "$5.00/month";
+    } else {
+      planTitle.textContent = "Monthly Plan";
+      planPrice.textContent = "$5.99/month";
+    }
+  });
+</script>
