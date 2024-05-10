@@ -1,5 +1,6 @@
 ##CUSTOM FILES, ADDD BEFORE DEPLOYMENT
 *.gif
+src/images/
 
 # build output
 dist/

@@ -1,0 +1,138 @@
+---
+import Main from "../layouts/Main.astro";
+// svgs
+import {
+  logo,
+  iconBlacklist,
+  iconText,
+  iconPreview,
+  iconFb,
+  iconX,
+  iconIg,
+} from "../images/landing/";
+// pngs
+import {
+  imagePC,
+  imageDevices,
+  logoGoogle,
+  logoIBM,
+  logoMicrosoft,
+  logoHp,
+  logoVector,
+} from "../images/landing/";
+import LandingMain from "../components/LandingMain.astro";
+---
+
+<Main title="Landing Page">
+  <div id="landing-page-main">
+    <section class="bg-landing-hm">
+      <img src={logo.src} alt="Logo" />
+      <LandingMain title="A history of everything you copy"
+        >Clipboard allows you to track and organize everything you copy.
+        Instantly access your clipboard on all your devices.</LandingMain
+      >
+      <h3 class="fuente-bold"></h3>
+      <p></p>
+      <button>Download for iOS</button>
+      <button>Download for Mac</button>
+    </section>
+    <section>
+      <h4 class="fuente-bold">Keep track of your snippets</h4>
+      <p>
+        Clipboard instantly stores any item you copy in the cloud, meaning
+        youcan access your snippets immediately on all your devices. Our Mac and
+        iOS apps will help you organize everything.
+      </p>
+      <div>
+        <img src={imagePC.src} alt="Mac Computer" />
+        <article>
+          <h5 class="fuente-bold">Quick Search</h5>
+          <p>
+            Easily search your snippets by content, category, web address,
+            application, and more.
+          </p>
+          <h5 class="fuente-bold">iCloud Sync</h5>
+          <p>Instantly saves and syncs snippets across all your devices.</p>
+          <h5 class="fuente-bold">Complete History</h5>
+          <p>
+            Retrieve any snippets from the first moment you started using the
+            app.
+          </p>
+        </article>
+      </div>
+    </section>
+    <section>
+      <h4 class="fuente-bold">Access Clipboard anywhere</h4>
+      <p>
+        Whether you’re on the go, or at your computer, you can access all your
+        Clipboard snippets in a few simple clicks.
+      </p>
+      <img src={imageDevices.src} alt="iPhone and iPad" />
+    </section>
+    <section>
+      <h4 class="fuente-bold">Supercharge your workflow</h4>
+      <p>We’ve got the tools to boost your productivity.</p>
+      <div>
+        <img src="" alt="" />
+        <h5 class="fuente-bold">Create blacklists</h5>
+        <p>
+          Ensure sensitive information never makes its way to your clipboard by
+          excluding certain sources.
+        </p>
+      </div>
+      <div>
+        <img src="" alt="" />
+        <h5 class="fuente-bold">Plain text snippets</h5>
+        <p>
+          Remove unwanted formatting from copied text for a consistent look.
+        </p>
+      </div>
+      <div>
+        <img src="" alt="" />
+        <h5 class="fuente-bold">Sneak preview</h5>
+        <p>Quick preview of all snippets on your Clipboard for easy access.</p>
+      </div>
+    </section>
+    <div>
+      <img src={logoGoogle.src} alt="logo Google" />
+      <img src={logoIBM.src} alt="logo IBM" />
+      <img src={logoMicrosoft.src} alt="logo Microsoft" />
+      <img src={logoHp.src} alt="logo HP" />
+      <img src={logoVector.src} alt="logo Vector Graphics" />
+    </div>
+    <LandingMain title="Clipboard for iOS and Mac OS"
+      >Available for free on the App Store. Download for Mac or iOS, sync with
+      iCloud and you’re ready to start adding to your clipboard.</LandingMain
+    >
+    <footer>
+      <img src={logo.src} alt="Logo" />
+      <ul>
+        <li>FAQs</li>
+        <li>Contact Us</li>
+        <li>Privacy Policy</li>
+        <li>Press Kit</li>
+        <li>Install Guide</li>
+      </ul>
+      <div>
+        <img src={iconFb.src} alt="visit our " />
+        <img src={iconX.src} alt="visit our " />
+        <img src={iconIg.src} alt="visit our " />
+      </div>
+    </footer>
+  </div>
+</Main>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap");
+  #landing-page-main {
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+  }
+  .fuente-bold {
+    font-weight: 600;
+  }
+  p {
+    color: hsl(210, 10%, 33%);
+  }
+</style>
