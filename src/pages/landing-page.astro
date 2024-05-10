@@ -21,102 +21,124 @@ import {
   logoVector,
 } from "../images/landing/";
 import LandingMain from "../components/LandingMain.astro";
+
+const fuenteSubtitulo = "fuente-bold text-center text-grayish text-2xl";
+const maxContainer = "px-[1.5rem]";
 ---
 
 <Main title="Landing Page">
-  <div id="landing-page-main">
-    <section class="bg-landing-hm">
-      <img src={logo.src} alt="Logo" />
-      <LandingMain title="A history of everything you copy"
-        >Clipboard allows you to track and organize everything you copy.
-        Instantly access your clipboard on all your devices.</LandingMain
+  <div class="bg-landing-hm w-full h-[40vh] absolute"></div>
+  <div id="landing-page-main" class="text-center">
+    <div class={maxContainer}>
+      <section>
+        <img src={logo.src} alt="Logo" class="w-28 mx-auto my-14" />
+        <LandingMain title="A history of everything you copy"
+          >Clipboard allows you to track and organize everything you copy.
+          Instantly access your clipboard on all your devices.</LandingMain
+        >
+      </section>
+      <section class="mt-36">
+        <h4 class={fuenteSubtitulo + " text-3xl"}>
+          Keep track of your snippets
+        </h4>
+        <p>
+          Clipboard instantly stores any item you copy in the cloud, meaning
+          youcan access your snippets immediately on all your devices. Our Mac
+          and iOS apps will help you organize everything.
+        </p>
+        <div>
+          <img src={imagePC.src} alt="Mac Computer" class="my-12" />
+          <article>
+            <h5 class={fuenteSubtitulo}>Quick Search</h5>
+            <p class="mt-2 mb-8">
+              Easily search your snippets by content, category, web address,
+              application, and more.
+            </p>
+            <h5 class={fuenteSubtitulo}>iCloud Sync</h5>
+            <p class="mt-2 mb-8">
+              Instantly saves and syncs snippets across all your devices.
+            </p>
+            <h5 class={fuenteSubtitulo}>Complete History</h5>
+            <p class="mt-2 mb-8">
+              Retrieve any snippets from the first moment you started using the
+              app.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="mt-36">
+        <h4 class={fuenteSubtitulo + " text-3xl"}>Access Clipboard anywhere</h4>
+        <p class="mt-4 mb-12">
+          Whether you’re on the go, or at your computer, you can access all your
+          Clipboard snippets in a few simple clicks.
+        </p>
+        <img src={imageDevices.src} alt="iPhone and iPad" />
+      </section>
+      <section class="mt-28">
+        <h4 class={fuenteSubtitulo + " text-3xl"}>Supercharge your workflow</h4>
+        <p class="my-2">We’ve got the tools to boost your productivity.</p>
+        <div class="mt-24">
+          <img
+            src={iconBlacklist.src}
+            alt="icon of paper"
+            class="mx-auto my-8"
+          />
+          <h5 class={fuenteSubtitulo}>Create blacklists</h5>
+          <p class="py-2">
+            Ensure sensitive information never makes its way to your clipboard
+            by excluding certain sources.
+          </p>
+        </div>
+        <div>
+          <img src={iconText.src} alt="icon of input" class="mx-auto my-8" />
+          <h5 class={fuenteSubtitulo}>Plain text snippets</h5>
+          <p class="py-2">
+            Remove unwanted formatting from copied text for a consistent look.
+          </p>
+        </div>
+        <div>
+          <img
+            src={iconPreview.src}
+            alt="icon of an eye"
+            class="mx-auto my-8"
+          />
+          <h5 class={fuenteSubtitulo}>Sneak preview</h5>
+          <p class="py-2">
+            Quick preview of all snippets on your Clipboard for easy access.
+          </p>
+        </div>
+      </section>
+      <div class="mt-32 pb-16" id="brand-logos">
+        <img src={logoGoogle.src} alt="logo Google" />
+        <img src={logoIBM.src} alt="logo IBM" />
+        <img src={logoMicrosoft.src} alt="logo Microsoft" />
+        <img src={logoHp.src} alt="logo HP" />
+        <img src={logoVector.src} alt="logo Vector Graphics" />
+      </div>
+      <LandingMain title="Clipboard for iOS and Mac OS"
+        >Available for free on the App Store. Download for Mac or iOS, sync with
+        iCloud and you’re ready to start adding to your clipboard.</LandingMain
       >
-      <h3 class="fuente-bold"></h3>
-      <p></p>
-      <button>Download for iOS</button>
-      <button>Download for Mac</button>
-    </section>
-    <section>
-      <h4 class="fuente-bold">Keep track of your snippets</h4>
-      <p>
-        Clipboard instantly stores any item you copy in the cloud, meaning
-        youcan access your snippets immediately on all your devices. Our Mac and
-        iOS apps will help you organize everything.
-      </p>
-      <div>
-        <img src={imagePC.src} alt="Mac Computer" />
-        <article>
-          <h5 class="fuente-bold">Quick Search</h5>
-          <p>
-            Easily search your snippets by content, category, web address,
-            application, and more.
-          </p>
-          <h5 class="fuente-bold">iCloud Sync</h5>
-          <p>Instantly saves and syncs snippets across all your devices.</p>
-          <h5 class="fuente-bold">Complete History</h5>
-          <p>
-            Retrieve any snippets from the first moment you started using the
-            app.
-          </p>
-        </article>
-      </div>
-    </section>
-    <section>
-      <h4 class="fuente-bold">Access Clipboard anywhere</h4>
-      <p>
-        Whether you’re on the go, or at your computer, you can access all your
-        Clipboard snippets in a few simple clicks.
-      </p>
-      <img src={imageDevices.src} alt="iPhone and iPad" />
-    </section>
-    <section>
-      <h4 class="fuente-bold">Supercharge your workflow</h4>
-      <p>We’ve got the tools to boost your productivity.</p>
-      <div>
-        <img src="" alt="" />
-        <h5 class="fuente-bold">Create blacklists</h5>
-        <p>
-          Ensure sensitive information never makes its way to your clipboard by
-          excluding certain sources.
-        </p>
-      </div>
-      <div>
-        <img src="" alt="" />
-        <h5 class="fuente-bold">Plain text snippets</h5>
-        <p>
-          Remove unwanted formatting from copied text for a consistent look.
-        </p>
-      </div>
-      <div>
-        <img src="" alt="" />
-        <h5 class="fuente-bold">Sneak preview</h5>
-        <p>Quick preview of all snippets on your Clipboard for easy access.</p>
-      </div>
-    </section>
-    <div>
-      <img src={logoGoogle.src} alt="logo Google" />
-      <img src={logoIBM.src} alt="logo IBM" />
-      <img src={logoMicrosoft.src} alt="logo Microsoft" />
-      <img src={logoHp.src} alt="logo HP" />
-      <img src={logoVector.src} alt="logo Vector Graphics" />
     </div>
-    <LandingMain title="Clipboard for iOS and Mac OS"
-      >Available for free on the App Store. Download for Mac or iOS, sync with
-      iCloud and you’re ready to start adding to your clipboard.</LandingMain
+    <footer
+      class="max-container mt-40 bg-[#f5f6f8] px-0 text-center text-grayish"
     >
-    <footer>
-      <img src={logo.src} alt="Logo" />
-      <ul>
-        <li>FAQs</li>
-        <li>Contact Us</li>
-        <li>Privacy Policy</li>
-        <li>Press Kit</li>
-        <li>Install Guide</li>
-      </ul>
-      <div>
-        <img src={iconFb.src} alt="visit our " />
-        <img src={iconX.src} alt="visit our " />
-        <img src={iconIg.src} alt="visit our " />
+      <div class={maxContainer}>
+        <img src={logo.src} alt="Logo" class="w-14 mx-auto pb-10 pt-12" />
+        <ul>
+          <li>FAQs</li>
+          <li>Contact Us</li>
+          <li>Privacy Policy</li>
+          <li>Press Kit</li>
+          <li>Install Guide</li>
+        </ul>
+        <div class="inline-block min-w-min mx-auto mt-8 mb-12">
+          <div class="flex gap-12" id="brand-icons">
+            <img src={iconFb.src} alt="visit our Facebook" />
+            <img src={iconX.src} alt="visit our Twitter" />
+            <img src={iconIg.src} alt="visit our Instagram" />
+          </div>
+        </div>
       </div>
     </footer>
   </div>
@@ -133,6 +155,20 @@ import LandingMain from "../components/LandingMain.astro";
     font-weight: 600;
   }
   p {
-    color: hsl(210, 10%, 33%);
+    color: hsl(201, 11%, 66%);
+  }
+  #brand-logos > img {
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    width: 140px;
+  }
+  ul > li {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  ul > li:hover,
+  #brand-icons > img:hover {
+    cursor: pointer;
+    scale: 1.1;
   }
 </style>

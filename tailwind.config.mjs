@@ -6,9 +6,9 @@ export default {
       colors: {
         "astro-red": "#df376e",
         "astro-pink": "#ee40ed",
-        "clr-cyan": "hsl(171, 66%, 44%)",
+        aquamarina: "hsl(171, 66%, 44%)",
         "clr-light-blue": "hsl(233, 100%, 69%)",
-        "clr-grayish": "hsl(210, 10%, 33%)",
+        grayish: "#4c545d",
         "clr-light-gray": "hsl(201, 11%, 66%)",
       },
       backgroundImage: {
