@@ -2,17 +2,19 @@
 const { title } = Astro.props;
 ---
 
-<div>
+<div class="max-w-[593px] mx-auto">
   <h3 class="font-semibold text-3xl text-center text-grayish mb-4">{title}</h3>
   <p class="text-clr-light-gray mb-10 text-center">
     <slot />
   </p>
-  <button
-    class="bg-aquamarina text-white w-full rounded-3xl font-semibold py-[0.7rem] shadow-lg mb-6 hover:scale-95"
-    >Download for iOS</button
-  >
-  <button
-    class="bg-clr-light-blue text-white w-full rounded-3xl font-semibold py-[0.7rem] shadow-lg hover:scale-95"
-    >Download for Mac</button
-  >
+  <div class="sm:flex sm:gap-6 justify-center">
+    <button
+      class="bg-aquamarina text-white w-full sm:w-64 rounded-3xl font-semibold py-[0.7rem] shadow-lg mb-6 hover:scale-95"
+      >Download for iOS</button
+    >
+    <button
+      class="bg-clr-light-blue text-white sm:w-64 w-full rounded-3xl font-semibold py-[0.7rem] shadow-lg mb-6 hover:scale-95"
+      >Download for Mac</button
+    >
+  </div>
 </div>

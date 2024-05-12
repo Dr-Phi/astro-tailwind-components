@@ -27,7 +27,10 @@ const maxContainer = "px-[1.5rem]";
 ---
 
 <Main title="Landing Page">
-  <div class="bg-landing-hm w-full h-[40vh] absolute"></div>
+  <div
+    class="bg-landing-hm lg:bg-landing-hd bg-no-repeat bg-cover w-full h-[40vh] absolute"
+  >
+  </div>
   <div id="landing-page-main" class="text-center">
     <div class={maxContainer}>
       <section>
@@ -41,79 +44,104 @@ const maxContainer = "px-[1.5rem]";
         <h4 class={fuenteSubtitulo + " text-3xl"}>
           Keep track of your snippets
         </h4>
-        <p>
-          Clipboard instantly stores any item you copy in the cloud, meaning
-          youcan access your snippets immediately on all your devices. Our Mac
-          and iOS apps will help you organize everything.
+        <p class="md:max-w-[40rem] md:mx-auto md:mt-4">
+          Clipboard instantly stores any item you copy in the cloud, meaning you
+          can access your snippets immediately on all your devices. Our Mac and
+          iOS apps will help you organize everything.
         </p>
-        <div>
-          <img src={imagePC.src} alt="Mac Computer" class="my-12" />
-          <article>
-            <h5 class={fuenteSubtitulo}>Quick Search</h5>
+        <div class="sm:relative">
+          <img
+            src={imagePC.src}
+            alt="Mac Computer"
+            class="my-12 sm:my-2 sm:absolute sm:-left-8 sm:top-0 sm:w-[60%] lg:max-w-[670px]"
+          />
+          <article
+            class="sm:text-start sm:w-[40%] sm:ms-auto sm:mt-16 lg:max-w-[390px] xl:ms-[740px]"
+          >
+            <h5 class={fuenteSubtitulo + " sm:text-start"}>Quick Search</h5>
             <p class="mt-2 mb-8">
               Easily search your snippets by content, category, web address,
               application, and more.
             </p>
-            <h5 class={fuenteSubtitulo}>iCloud Sync</h5>
+            <h5 class={fuenteSubtitulo + " sm:text-start"}>iCloud Sync</h5>
             <p class="mt-2 mb-8">
               Instantly saves and syncs snippets across all your devices.
             </p>
-            <h5 class={fuenteSubtitulo}>Complete History</h5>
-            <p class="mt-2 mb-8">
-              Retrieve any snippets from the first moment you started using the
-              app.
-            </p>
+            <div
+              class="sm:absolute sm:w-[100%] sm:left-0 sm:-bottom-36 min-[714px]:static"
+            >
+              <h5 class={fuenteSubtitulo + " sm:text-start"}>
+                Complete History
+              </h5>
+              <p class="mt-2 mb-8">
+                Retrieve any snippets from the first moment you started using
+                the app.
+              </p>
+            </div>
           </article>
         </div>
       </section>
-      <section class="mt-36">
+      <section class="mt-36 sm:mt-44 min-[714px]:mt-32 lg:mt-44 xl:mt-56">
         <h4 class={fuenteSubtitulo + " text-3xl"}>Access Clipboard anywhere</h4>
-        <p class="mt-4 mb-12">
+        <p class="mt-4 mb-12 md:max-w-[40rem] md:mx-auto">
           Whether you’re on the go, or at your computer, you can access all your
           Clipboard snippets in a few simple clicks.
         </p>
-        <img src={imageDevices.src} alt="iPhone and iPad" />
+        <img src={imageDevices.src} alt="iPhone and iPad" class="mx-auto" />
       </section>
       <section class="mt-28">
         <h4 class={fuenteSubtitulo + " text-3xl"}>Supercharge your workflow</h4>
         <p class="my-2">We’ve got the tools to boost your productivity.</p>
-        <div class="mt-24">
-          <img
-            src={iconBlacklist.src}
-            alt="icon of paper"
-            class="mx-auto my-8"
-          />
-          <h5 class={fuenteSubtitulo}>Create blacklists</h5>
-          <p class="py-2">
-            Ensure sensitive information never makes its way to your clipboard
-            by excluding certain sources.
-          </p>
-        </div>
-        <div>
-          <img src={iconText.src} alt="icon of input" class="mx-auto my-8" />
-          <h5 class={fuenteSubtitulo}>Plain text snippets</h5>
-          <p class="py-2">
-            Remove unwanted formatting from copied text for a consistent look.
-          </p>
-        </div>
-        <div>
-          <img
-            src={iconPreview.src}
-            alt="icon of an eye"
-            class="mx-auto my-8"
-          />
-          <h5 class={fuenteSubtitulo}>Sneak preview</h5>
-          <p class="py-2">
-            Quick preview of all snippets on your Clipboard for easy access.
-          </p>
+        <div
+          class="sm:max-w-[400px] mx-auto lg:flex lg:max-w-full lg:gap-8 lg:mt-8 lg:justify-center"
+        >
+          <div class="mt-24 lg:mt-0 lg:basis-1/3 xl:max-w-[390px]">
+            <img
+              src={iconBlacklist.src}
+              alt="icon of paper"
+              class="mx-auto my-8"
+            />
+            <h5 class={fuenteSubtitulo}>Create blacklists</h5>
+            <p class="py-2">
+              Ensure sensitive information never makes its way to your clipboard
+              by excluding certain sources.
+            </p>
+          </div>
+          <div class="lg:basis-1/3 xl:max-w-[390px]">
+            <img src={iconText.src} alt="icon of input" class="mx-auto my-8" />
+            <h5 class={fuenteSubtitulo}>Plain text snippets</h5>
+            <p class="py-2">
+              Remove unwanted formatting from copied text for a consistent look.
+            </p>
+          </div>
+          <div class="lg:basis-1/3 xl:max-w-[390px]">
+            <img
+              src={iconPreview.src}
+              alt="icon of an eye"
+              class="mx-auto my-8"
+            />
+            <h5 class={fuenteSubtitulo}>Sneak preview</h5>
+            <p class="py-2">
+              Quick preview of all snippets on your Clipboard for easy access.
+            </p>
+          </div>
         </div>
       </section>
-      <div class="mt-32 pb-16" id="brand-logos">
-        <img src={logoGoogle.src} alt="logo Google" />
-        <img src={logoIBM.src} alt="logo IBM" />
-        <img src={logoMicrosoft.src} alt="logo Microsoft" />
-        <img src={logoHp.src} alt="logo HP" />
-        <img src={logoVector.src} alt="logo Vector Graphics" />
+      <div
+        class="mt-32 pb-16 sm:pb-24 lg:flex lg:justify-center"
+        id="brand-logos"
+      >
+        <div class="sm:flex sm:gap-10 sm:justify-center lg:basis-/5">
+          <img src={logoGoogle.src} alt="logo Google" />
+          <img src={logoIBM.src} alt="logo IBM" />
+          <img src={logoMicrosoft.src} alt="logo Microsoft" />
+        </div>
+        <div
+          class="sm:flex sm:gap-10 sm:mt-12 sm:justify-center sm:flex-none lg:mt-0 lg:ms-8"
+        >
+          <img src={logoHp.src} alt="logo HP" />
+          <img src={logoVector.src} alt="logo Vector Graphics" />
+        </div>
       </div>
       <LandingMain title="Clipboard for iOS and Mac OS"
         >Available for free on the App Store. Download for Mac or iOS, sync with
@@ -157,10 +185,11 @@ const maxContainer = "px-[1.5rem]";
   p {
     color: hsl(201, 11%, 66%);
   }
-  #brand-logos > img {
+  #brand-logos img {
     margin: 0 auto;
     margin-bottom: 5rem;
     width: 140px;
+    height: 55px;
   }
   ul > li {
     margin-bottom: 1.5rem;
@@ -170,5 +199,6 @@ const maxContainer = "px-[1.5rem]";
   #brand-icons > img:hover {
     cursor: pointer;
     scale: 1.1;
+    color: hsl(171, 66%, 44%);
   }
 </style>
