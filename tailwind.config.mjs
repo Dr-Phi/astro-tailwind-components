@@ -14,6 +14,11 @@ export default {
       backgroundImage: {
         "landing-hm": "url('src/images/landing/bg-header-mobile.png')",
         "landing-hd": "url('src/images/landing/bg-header-desktop.png')",
+        "insurance-nav":
+          'url("src/images/insurance/bg-pattern-mobile-nav.svg")',
+      },
+      fontFamily: {
+        karla: ["Karla", "sans-serif"],
       },
     },
   },
